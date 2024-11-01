@@ -6,12 +6,13 @@ using System;
 public class GameManager : MonoBehaviour
 {
     
-    [SerializeField]
-    private GameOverUI _gameOverUI;
-    [SerializeField]
-    private Player _player;
+    [SerializeField] private GameOverUI _gameOverUI;
+    [SerializeField] private Player _player;
+    [SerializeField] private GameObject joystick;
+    [SerializeField] private GameObject joystickButton;
+    
     private bool IsDeath = false;
-    private Transform _firstPos;
+    private Transform firstPos;
 
     //properties
     #region
@@ -34,12 +35,19 @@ public class GameManager : MonoBehaviour
     //constructor
     public GameManager()
     {
+    }
 
+    private void Awake()
+    {
+#if !(UNITY_ANDROID && !UNITY_EDITOR)
+        joystick.SetActive(false);
+        joystickButton.SetActive(false);   
+#endif
     }
 
     private void Start()
     {
-        _firstPos = _player.transform;
+        firstPos = _player.transform;
     }
 
     private void Update()
@@ -73,23 +81,10 @@ public class GameManager : MonoBehaviour
     }
 
 
-  public static void CalculateTotalCoin()
+    public static void CalculateTotalCoin()
     {
         Player.totalCoin = Player.totalCoin + Player._playerScore;
         Debug.Log("Player total coin: " +Player.totalCoin);
 
     }
-
-    //functions
-   
-
-
-
-   
-
-
-  
-
-
-  
 }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LoginUI : MonoBehaviour
 {
 
-    public string _playerName;
+   public string _playerName;
    public void PlayButton()
     {
         SceneManager.LoadScene("MainMenu");

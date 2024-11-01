@@ -21,7 +21,6 @@ public class ClickSound : MonoBehaviour
 
     void Start()
     {
-
         _button.onClick.AddListener(() => PlaySound());
     }
 

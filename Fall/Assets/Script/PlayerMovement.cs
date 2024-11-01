@@ -7,16 +7,22 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D myBody;
     public float moveSpeed = 1f;
+
+#if UNITY_ANDROID && !UNITY_EDITOR
     protected Joystick _joystick;
     protected JoyButton _joybutton;
+#endif
+
     private AudioSource _audio;
 
     public bool IsOnGround = false;
 
     private void Start()
     {
+#if UNITY_ANDROID && !UNITY_EDITOR
         _joystick = FindObjectOfType<Joystick>();
         _joybutton = FindObjectOfType<JoyButton>();
+#endif
         _audio = FindObjectOfType<AudioSource>();
     }
     private void Awake()
@@ -32,14 +38,23 @@ public class PlayerMovement : MonoBehaviour
 
     void Movement()
     {
+#if UNITY_ANDROID && !UNITY_EDITOR
         myBody.velocity = new Vector2(_joystick.Horizontal * 20f, myBody.velocity.y);
 
         if(_joybutton.Pressed && IsOnGround)
         {
-                myBody.velocity += Vector2.up * 2f;
+            myBody.velocity += Vector2.up * 2f;
             _audio.Play();
-
         }
+#else
+        myBody.velocity = new Vector2(Input.GetAxis("Horizontal") * 20f, myBody.velocity.y);
+
+        if(Input.GetKeyDown(KeyCode.Space) && IsOnGround)
+        {
+            myBody.velocity += Vector2.up * 2f;
+            _audio.Play();
+        }
+#endif
 
     }
 
@@ -81,9 +96,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Platform")
         {
             IsOnGround = false;
-            Debug.Log("Çıkıyorum");
         }
- 
     }
 
 
@@ -92,9 +105,4 @@ public class PlayerMovement : MonoBehaviour
         Player._playerScore++;
         Debug.Log("Player Score: " + Player._playerScore);
     }
-
-
-
-
-
 }

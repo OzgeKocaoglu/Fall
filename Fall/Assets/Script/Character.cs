@@ -11,12 +11,11 @@ using UnityEngine;
         public GameObject _ob;
         public string name;
 
-       public Character(bool ıshave, GameObject _object, string _name)
+       public Character(bool have, GameObject _object, string _name)
        {
-        IsHave = ıshave;
-        _ob = _object;
-        name = _name;
-        
+            IsHave = have;
+            _ob = _object;
+            name = _name;
        }
 
 

@@ -1,22 +1,48 @@
 fileFormatVersion: 2
 guid: 20455e4579282d24aa9969aa77f719c9
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Retro Style Basic Mobile Game UI_0
-    21300002: Retro Style Basic Mobile Game UI_1
-    21300004: Retro Style Basic Mobile Game UI_2
-    21300006: Retro Style Basic Mobile Game UI_3
-    21300008: Retro Style Basic Mobile Game UI_4
-    21300010: Retro Style Basic Mobile Game UI_5
-    21300012: Retro Style Basic Mobile Game UI_6
-    21300014: Retro Style Basic Mobile Game UI_7
-    21300016: Retro Style Basic Mobile Game UI_8
-    21300018: Retro Style Basic Mobile Game UI_9
-    21300020: Retro Style Basic Mobile Game UI_10
-    21300022: Retro Style Basic Mobile Game UI_11
-    21300024: Retro Style Basic Mobile Game UI_12
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Retro Style Basic Mobile Game UI_0
+  - first:
+      213: 21300002
+    second: Retro Style Basic Mobile Game UI_1
+  - first:
+      213: 21300004
+    second: Retro Style Basic Mobile Game UI_2
+  - first:
+      213: 21300006
+    second: Retro Style Basic Mobile Game UI_3
+  - first:
+      213: 21300008
+    second: Retro Style Basic Mobile Game UI_4
+  - first:
+      213: 21300010
+    second: Retro Style Basic Mobile Game UI_5
+  - first:
+      213: 21300012
+    second: Retro Style Basic Mobile Game UI_6
+  - first:
+      213: 21300014
+    second: Retro Style Basic Mobile Game UI_7
+  - first:
+      213: 21300016
+    second: Retro Style Basic Mobile Game UI_8
+  - first:
+      213: 21300018
+    second: Retro Style Basic Mobile Game UI_9
+  - first:
+      213: 21300020
+    second: Retro Style Basic Mobile Game UI_10
+  - first:
+      213: 21300022
+    second: Retro Style Basic Mobile Game UI_11
+  - first:
+      213: 21300024
+    second: Retro Style Basic Mobile Game UI_12
   externalObjects: {}
-  serializedVersion: 9
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -33,9 +59,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -44,12 +73,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -67,11 +96,17 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -81,8 +116,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -92,8 +129,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -103,8 +142,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -114,7 +155,22 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -134,6 +190,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3766481942c9c49438b18ed6b906425a
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -154,6 +211,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: acfe3c43725eed04a92119e2e3077814
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -174,6 +232,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: c790e4866a9d655498cfc3f4bd748a0d
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -194,6 +253,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3be19fd56578e51429bf2387f13ea6ea
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -214,6 +274,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4a1d68e534ed86f4488942b5e6849576
+      internalID: 21300008
       vertices: []
       indices: 
       edges: []
@@ -234,6 +295,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: eeb2127fc526b6148ad4c46837f8a44f
+      internalID: 21300010
       vertices: []
       indices: 
       edges: []
@@ -254,6 +316,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 431fea7328f70ce4e9f2722aeb6ed9d2
+      internalID: 21300012
       vertices: []
       indices: 
       edges: []
@@ -274,6 +337,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: e8d27589dc9c7d647a77bfa35f4b8c11
+      internalID: 21300014
       vertices: []
       indices: 
       edges: []
@@ -294,6 +358,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ca6682e58ec97f247926b147103f1621
+      internalID: 21300016
       vertices: []
       indices: 
       edges: []
@@ -314,6 +379,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 355cfa06014724e45b86846ff88d088b
+      internalID: 21300018
       vertices: []
       indices: 
       edges: []
@@ -334,6 +400,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: dceafc97b01d220469ff9805563774ec
+      internalID: 21300020
       vertices: []
       indices: 
       edges: []
@@ -354,6 +421,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 034f0679b12b84e4398ecfac575e4f9b
+      internalID: 21300022
       vertices: []
       indices: 
       edges: []
@@ -374,6 +442,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d075a7a7a95d637488189a71fded02b4
+      internalID: 21300024
       vertices: []
       indices: 
       edges: []
@@ -382,13 +451,28 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: f96cb6cd161dace489beb03e3037996d
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: 
+    secondaryTextures: []
+    nameFileIdTable:
+      Retro Style Basic Mobile Game UI_0: 21300000
+      Retro Style Basic Mobile Game UI_1: 21300002
+      Retro Style Basic Mobile Game UI_10: 21300020
+      Retro Style Basic Mobile Game UI_11: 21300022
+      Retro Style Basic Mobile Game UI_12: 21300024
+      Retro Style Basic Mobile Game UI_2: 21300004
+      Retro Style Basic Mobile Game UI_3: 21300006
+      Retro Style Basic Mobile Game UI_4: 21300008
+      Retro Style Basic Mobile Game UI_5: 21300010
+      Retro Style Basic Mobile Game UI_6: 21300012
+      Retro Style Basic Mobile Game UI_7: 21300014
+      Retro Style Basic Mobile Game UI_8: 21300016
+      Retro Style Basic Mobile Game UI_9: 21300018
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
