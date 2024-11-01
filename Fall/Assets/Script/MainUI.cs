@@ -4,15 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using TMPro;
+
 public class MainUI : MonoBehaviour
 {
 
-    public Text _playerName;
-    public Text _coinAmount;
+    public TMP_Text _playerName;
+    public TMP_Text _coinAmount;
 
     private void Awake()
     {
-        _playerName.text = Player._name;
+        // _playerName.text = Player._name;
     }
     private void Update()
     {
