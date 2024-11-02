@@ -888,7 +888,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 3.5
-    functionName: ContinueToMainMenu
+    functionName: ContinueToLogin
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
