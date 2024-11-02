@@ -36,7 +36,10 @@
    cd api
    npm install
    npm install express
+   npm install bcrypt
    node server.js
+
+   
 3. Run the Game:
 Open the Fall project in Unity.
 Configure MongoDB and API URLs in the project settings.
