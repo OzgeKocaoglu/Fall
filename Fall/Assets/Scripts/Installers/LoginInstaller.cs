@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------------
-    Title       :  Splash.cs
-    Date        :  31 Oct 2024
+    Title       :  LoginInstaller
+    Date        :  2 Kasım 2024
     Programmer  :  Ozge Kocaoglu
     Package     :  Version 1.0
     Copyright   :  MIT License
@@ -15,41 +15,28 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
--------------------------------------------------------------------------- */	
+-------------------------------------------------------------------------- */
+
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 using Zenject;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
-namespace Persephone {
-
-    public class Splash : MonoBehaviour
+namespace Persephone.Installers
+{
+    public class LoginInstaller : MonoInstaller
     {
-        [SerializeField] private AudioSource openingSound;
+        public override void InstallBindings()
+        {
+            InstallLogin();
+        }
 
-        ZenjectSceneLoader _sceneLoader;
-        
-        [Inject]
-        public void Construct(ZenjectSceneLoader sceneLoader)
+        void InstallLogin()
         {
-            _sceneLoader = sceneLoader;
-        }
-        
-        public void PlaySound()
-        {
-            openingSound.Play();    
-        }
-        
-        public void ContinueToLogin()
-        {
-            _sceneLoader.LoadScene("Login", LoadSceneMode.Single, (container) =>
-            {
-                container.BindInstance("Login").WhenInjectedInto<SceneHandler>();
-            });
+            
         }
     }
+
 }

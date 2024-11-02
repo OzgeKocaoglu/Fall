@@ -26,3 +26,4 @@ public class Background : MonoBehaviour
         meshRenderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
     }
 }
+

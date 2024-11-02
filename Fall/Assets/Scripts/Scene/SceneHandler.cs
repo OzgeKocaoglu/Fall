@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------------
-    Title       :  Splash.cs
-    Date        :  31 Oct 2024
+    Title       :  SceneHandler
+    Date        :  18:17:57
     Programmer  :  Ozge Kocaoglu
     Package     :  Version 1.0
     Copyright   :  MIT License
@@ -15,41 +15,30 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
--------------------------------------------------------------------------- */	
+-------------------------------------------------------------------------- */
+
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 using Zenject;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
-namespace Persephone {
-
-    public class Splash : MonoBehaviour
+namespace Persephone
+{
+    public class SceneHandler : IInitializable
     {
-        [SerializeField] private AudioSource openingSound;
+        private readonly string _startScene;
+        
+        public SceneHandler(string startScene)
+        {
+            _startScene = startScene;
+        }
 
-        ZenjectSceneLoader _sceneLoader;
-        
-        [Inject]
-        public void Construct(ZenjectSceneLoader sceneLoader)
+        public void Initialize()
         {
-            _sceneLoader = sceneLoader;
-        }
-        
-        public void PlaySound()
-        {
-            openingSound.Play();    
-        }
-        
-        public void ContinueToLogin()
-        {
-            _sceneLoader.LoadScene("Login", LoadSceneMode.Single, (container) =>
-            {
-                container.BindInstance("Login").WhenInjectedInto<SceneHandler>();
-            });
+            SceneManager.LoadScene(_startScene);
         }
     }
 }
