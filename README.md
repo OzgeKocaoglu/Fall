@@ -1,11 +1,35 @@
-<div align="center"> # Fall
+<div align="center"> 
 
 <img src="https://github.com/OzgeKocaoglu/Fall/blob/master/Fall/docs/fall%20banner.png" alt="logo" width="400" height="auto" />
 
+<h1>Prometheus</h1>
   <p>
    :balloon: Fall is a game project developed in Unity using C#. Player data is stored in a MongoDB database and accessed via a REST API built with JavaScript and Node.js. The project utilizes Zenject for dependency injection and UniRx for reactive programming.
   </p>
 </div>
+
+<br />
+
+<!-- Table of Contents -->
+# :notebook_with_decorative_cover: Table of Contents
+
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Setup](#setup)
+   * [Requirements](#requirements)
+   * [Steps](#steps)
+- [Run](#running-the-Project)
+- [Gameplay Video](#gameplay-video)
+- [License](#license)
+
+
+## Technologies Used
+- **Unity & C#** - Game development
+- **JavaScript & Node.js** - For API development
+- **MongoDB** - Database
+- **Zenject** - Dependency Injection
+- **UniRx** - Reactive programming
+- **Photoshop** - Asset editing
 
 ## Features
 
@@ -20,7 +44,7 @@
 
 - Containerization of the Node.js API using Docker and deployment on Kubernetes.
 
-## Setup and Running the Project
+## Setup
 
 ### Requirements
 
@@ -42,21 +66,16 @@
    node server.js
 
    
-3. Run the Game:
-Open the Fall project in Unity.
-Configure MongoDB and API URLs in the project settings.
-Run the game in the Unity editor.
+## Running the Project
 
-## Technologies Used
-- **Unity & C#** - Game development
-- **JavaScript & Node.js** - For API development
-- **MongoDB** - Database
-- **Zenject** - Dependency Injection
-- **UniRx** - Reactive programming
-- **Photoshop** - Asset editing
+1. Open the Fall project in Unity.
+2. Configure MongoDB and API URLs in the project settings.
+3. Run the game in the Unity editor.
+
+## Gameplay Video
+https://www.youtube.com/watch?v=cegnxasAeMI&t=120s
+
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-
-https://www.youtube.com/watch?v=cegnxasAeMI&t=120s
