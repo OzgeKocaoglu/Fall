@@ -43,12 +43,12 @@ Configure MongoDB and API URLs in the project settings.
 Run the game in the Unity editor.
 
 ## Technologies Used
-- [Unity & C#] - Game development
-- [JavaScript & Node.js] - For API development
-- [MongoDB] - Database
-- [Zenject] - Dependency Injection
-- [UniRx] - Reactive programming
-- [Photoshop] - Asset editing
+- **Unity & C#** - Game development
+- **JavaScript & Node.js** - For API development
+- **MongoDB** - Database
+- **Zenject** - Dependency Injection
+- **UniRx** - Reactive programming
+- **Photoshop** - Asset editing
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
