@@ -3,7 +3,7 @@
 
 **Fall** is a game project developed in Unity using C#. Player data is stored in a MongoDB database and accessed via a REST API built with JavaScript and Node.js. The project utilizes Zenject for dependency injection and UniRx for reactive programming.
 
-![](Fall/docs/fallbanner.png)
+![](https://github.com/OzgeKocaoglu/Fall/blob/master/Fall/docs/fall%20banner.png?raw=true)
 
 ## Features
 
