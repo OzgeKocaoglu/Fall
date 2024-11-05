@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------------
-    Title       :  PlatformFacade
-    Date        :  22:51:12
+    Title       :  SpikePlatformFacade
+    Date        :  01:44:07
     Programmer  :  Ozge Kocaoglu
     Package     :  Version 1.0
     Copyright   :  MIT License
@@ -20,19 +20,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Persephone.Signals;
 using UnityEngine;
+
 using Zenject;
 
 namespace Persephone
 {
-    public class PlatformFacade : MonoBehaviour, IPoolable<float, IMemoryPool>, IDisposable
+    public class SpikePlatformFacade : PlatformFacade
     {
-        protected SignalBus signalBus;
-        protected PlatformView view;
-        protected PlatformRegistry registry;
-        protected IMemoryPool pool;
-        
         [Inject]
         public void Construct(PlatformView view, PlatformRegistry registry, SignalBus signalBus)
         {
@@ -41,38 +36,7 @@ namespace Persephone
             this.signalBus = signalBus;
         }
         
-        public virtual void Dispose()
-        {
-            pool.Despawn(this);
-        }
-        
-        public Vector3 Position
-        {
-            get { return view.Position; }
-            set { view.Position = value; }
-        }
-
-        public void PlatformWentOutside()
-        {
-            signalBus.Fire<PlatformWentOutsideSignal>();
-            Dispose();
-        }
-        
-        public virtual void OnDespawned()
-        {
-            registry.RemoveEnemy(this);
-            pool = null;
-        }
-
-        public virtual void OnSpawned(float t, IMemoryPool pool)
-        {
-            this.pool = pool;
-            registry.AddEnemy(this);
-            
-            Debug.Log(gameObject.name);
-        }
-        
-        public class Factory : PlaceholderFactory<float, PlatformFacade>
+        public class Factory : PlaceholderFactory<float, SpikePlatformFacade>
         {
         }
     }

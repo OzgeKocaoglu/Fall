@@ -39,6 +39,12 @@ namespace Persephone
         {
             get; set;
         }
+
+        [Inject]
+        public LevelBoundary LevelBoundary
+        {
+            get; set;
+        }
         
         public MeshRenderer Renderer
         {
@@ -67,6 +73,11 @@ namespace Persephone
             Vector2 temp = transform.position;
             temp.y += amount;
             Position = temp;
+
+            if (Position.y > LevelBoundary.Top)
+            {
+                Facade.PlatformWentOutside();
+            }
         }
     }
 }

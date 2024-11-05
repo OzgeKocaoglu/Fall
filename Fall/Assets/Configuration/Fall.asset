@@ -19,8 +19,8 @@ MonoBehaviour:
       type: 3}
   PlatformSpawner:
     NumPlatformsIncreaseRate: 1
-    NumPlatformsStartAmount: 1
-    MinDelayBetweenSpawns: 2
+    NumPlatformsStartAmount: 5
+    MinDelayBetweenSpawns: 4
   Platform:
     PlatformMovement:
-      moveSpeed: 2
+      moveSpeed: 2.1

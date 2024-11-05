@@ -42,6 +42,13 @@ namespace Persephone.Installers
                     .ByNewPrefabInstaller<PlatformInstaller>(settings.PlatformPrefab)
                     .UnderTransformGroup("Platforms"));
             
+            Container.BindFactory<float, SpikePlatformFacade, SpikePlatformFacade.Factory>()
+                .FromPoolableMemoryPool<float, SpikePlatformFacade, SpikePlatformFacadePool>(poolBinder => poolBinder
+                    .WithInitialSize(5)
+                    .FromSubContainerResolve()
+                    .ByNewPrefabInstaller<PlatformInstaller>(settings.SpikePlatformPrefab)
+                    .UnderTransformGroup("SpikePlatforms"));
+            
             Container.Bind<LevelBoundary>().AsSingle();
             
             Container.Bind<PlatformRegistry>().AsSingle();
@@ -58,6 +65,10 @@ namespace Persephone.Installers
         }
         
         class PlatformFacadePool : MonoPoolableMemoryPool<float, IMemoryPool, PlatformFacade>
+        {
+        }
+        
+        class SpikePlatformFacadePool : MonoPoolableMemoryPool<float, IMemoryPool, SpikePlatformFacade>
         {
         }
     }

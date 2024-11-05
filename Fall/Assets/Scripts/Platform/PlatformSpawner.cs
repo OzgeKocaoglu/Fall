@@ -31,7 +31,8 @@ namespace Persephone
 {
     public class PlatformSpawner : ITickable, IInitializable
     {
-        PlatformFacade.Factory factory;
+        PlatformFacade.Factory platformFactory;
+        SpikePlatformFacade.Factory spikeFactory;
         readonly SignalBus signalBus;
         readonly Settings settings;
         readonly LevelBoundary levelBoundary;
@@ -40,12 +41,13 @@ namespace Persephone
         private int platformCount;
         private float lastSpawnTime;
         
-        public PlatformSpawner(Settings settings, LevelBoundary levelBoundary, SignalBus signalBus, PlatformFacade.Factory factory)
+        public PlatformSpawner(Settings settings, LevelBoundary levelBoundary, SignalBus signalBus, PlatformFacade.Factory platformFactory, SpikePlatformFacade.Factory spikeFactory)
         {
-            this.factory = factory;
+            this.platformFactory = platformFactory;
             this.signalBus = signalBus;
             this.levelBoundary = levelBoundary;
             this.settings = settings;
+            this.spikeFactory = spikeFactory;
             
             desiredNumPlatforms = (int) settings.NumPlatformsStartAmount;
         }
@@ -71,17 +73,27 @@ namespace Persephone
 
         void SpawnPlatform()
         {
-            var platformFacade = factory.Create(0f);
-            platformFacade.Position = ChooseRandomStartPosition();
-            Debug.Log(platformFacade.gameObject.name);
+            int randomIndex = Random.Range(0, 2);
+            PlatformFacade platform = null;
+
+            if (randomIndex == 0)
+            {
+                platform = platformFactory.Create(0f);
+            }
+            else
+            {
+                platform = spikeFactory.Create(0f);
+            }
             
+            platform.Position = ChooseRandomStartPosition();
             lastSpawnTime = Time.realtimeSinceStartup;
         }
         
         Vector3 ChooseRandomStartPosition()
         {
             var temp = Vector3.zero;
-            temp.x = Random.Range(-levelBoundary.Left, levelBoundary.Right);
+            temp.x = Random.Range(-3, 3);
+            temp.y = levelBoundary.Bottom -1;
 
             return temp;
             
