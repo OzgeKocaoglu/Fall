@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------------
-    Title       :  GameSettingsInstaller
-    Date        :  2 Kasım 2024
+    Title       :  PlatformMovementHandler
+    Date        :  00:05:12
     Programmer  :  Ozge Kocaoglu
     Package     :  Version 1.0
     Copyright   :  MIT License
@@ -23,28 +23,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Zenject;
-using Zenject.SpaceFighter;
 
-namespace Persephone.Installers
+namespace Persephone
 {
-    [CreateAssetMenu(fileName = "Fall", menuName = "Fall/GameInstaller")]
-    public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInstaller>
+    public class PlatformMovementHandler : ITickable, IInitializable
     {
-        public GameInstaller.Settings GameInstaller;
-        public PlatformSpawner.Settings PlatformSpawner;
-        public PlatformSettings Platform;
+        private readonly Settings settings;
+        private readonly PlatformView view;
 
-        [Serializable]
-        public class PlatformSettings
+        private float moveSpeed;
+        
+        public PlatformMovementHandler(PlatformView view, Settings settings)
         {
-            public PlatformMovementHandler.Settings PlatformMovement;
+            this.settings = settings;
+            this.view = view;
         }
         
-        public override void InstallBindings()
+        public void Initialize()
         {
-            Container.BindInstance(PlatformSpawner).IfNotBound();
-            Container.BindInstance(GameInstaller).IfNotBound();
-            Container.BindInstance(Platform.PlatformMovement).IfNotBound();
+            this.moveSpeed = settings.moveSpeed;
+        }
+        
+        public void Tick()
+        {
+            view.MoveUp(moveSpeed * Time.deltaTime);
+        }
+        
+        [Serializable]
+        public class Settings
+        {
+            public float moveSpeed;
         }
     }
 }

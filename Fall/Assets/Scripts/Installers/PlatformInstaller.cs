@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------------
-    Title       :  GameSettingsInstaller
-    Date        :  2 Kasım 2024
+    Title       :  PlatformInstaller
+    Date        :  4 Kasım 2024 Pazartesi
     Programmer  :  Ozge Kocaoglu
     Package     :  Version 1.0
     Copyright   :  MIT License
@@ -23,28 +23,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Zenject;
-using Zenject.SpaceFighter;
 
 namespace Persephone.Installers
 {
-    [CreateAssetMenu(fileName = "Fall", menuName = "Fall/GameInstaller")]
-    public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInstaller>
+    public class PlatformInstaller : Installer<PlatformInstaller>
     {
-        public GameInstaller.Settings GameInstaller;
-        public PlatformSpawner.Settings PlatformSpawner;
-        public PlatformSettings Platform;
-
-        [Serializable]
-        public class PlatformSettings
-        {
-            public PlatformMovementHandler.Settings PlatformMovement;
-        }
         
         public override void InstallBindings()
         {
-            Container.BindInstance(PlatformSpawner).IfNotBound();
-            Container.BindInstance(GameInstaller).IfNotBound();
-            Container.BindInstance(Platform.PlatformMovement).IfNotBound();
+            Container.BindInterfacesAndSelfTo<PlatformMovementHandler>().AsSingle();
         }
     }
 }

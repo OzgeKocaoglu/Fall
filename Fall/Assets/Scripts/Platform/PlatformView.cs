@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------------
-    Title       :  GameSettingsInstaller
-    Date        :  2 Kasım 2024
+    Title       :  PlatformView
+    Date        :  22:53:20
     Programmer  :  Ozge Kocaoglu
     Package     :  Version 1.0
     Copyright   :  MIT License
@@ -23,28 +23,50 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Zenject;
-using Zenject.SpaceFighter;
 
-namespace Persephone.Installers
+namespace Persephone
 {
-    [CreateAssetMenu(fileName = "Fall", menuName = "Fall/GameInstaller")]
-    public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInstaller>
+    public class PlatformView : MonoBehaviour
     {
-        public GameInstaller.Settings GameInstaller;
-        public PlatformSpawner.Settings PlatformSpawner;
-        public PlatformSettings Platform;
+        [SerializeField]
+        private MeshRenderer renderer = null;
 
-        [Serializable]
-        public class PlatformSettings
+        [SerializeField]
+        private Collider collider = null;
+        
+        [Inject]
+        public PlatformFacade Facade
         {
-            public PlatformMovementHandler.Settings PlatformMovement;
+            get; set;
         }
         
-        public override void InstallBindings()
+        public MeshRenderer Renderer
         {
-            Container.BindInstance(PlatformSpawner).IfNotBound();
-            Container.BindInstance(GameInstaller).IfNotBound();
-            Container.BindInstance(Platform.PlatformMovement).IfNotBound();
+            get { return renderer; }
+        }
+
+        public Collider Collider
+        {
+            get { return collider; }
+        }
+        
+        public Vector3 Position
+        {
+            get { return transform.position; }
+            set { transform.position = value; }
+        }
+
+        public Quaternion Rotation
+        {
+            get { return transform.rotation; }
+            set { transform.rotation = value; }
+        }
+
+        public void MoveUp(float amount)
+        {
+            Vector2 temp = transform.position;
+            temp.y += amount;
+            Position = temp;
         }
     }
 }

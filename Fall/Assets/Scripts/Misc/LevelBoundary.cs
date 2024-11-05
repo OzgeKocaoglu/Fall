@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------------
-    Title       :  GameSettingsInstaller
-    Date        :  2 Kasım 2024
+    Title       :  LevelBoundary
+    Date        :  22:48:18
     Programmer  :  Ozge Kocaoglu
     Package     :  Version 1.0
     Copyright   :  MIT License
@@ -22,29 +22,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Zenject;
-using Zenject.SpaceFighter;
-
-namespace Persephone.Installers
+namespace Persephone
 {
-    [CreateAssetMenu(fileName = "Fall", menuName = "Fall/GameInstaller")]
-    public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInstaller>
+    public class LevelBoundary
     {
-        public GameInstaller.Settings GameInstaller;
-        public PlatformSpawner.Settings PlatformSpawner;
-        public PlatformSettings Platform;
-
-        [Serializable]
-        public class PlatformSettings
+        readonly Camera camera;
+        
+        public LevelBoundary(Camera camera)
         {
-            public PlatformMovementHandler.Settings PlatformMovement;
+            this.camera = camera;
         }
         
-        public override void InstallBindings()
+        public float Bottom
         {
-            Container.BindInstance(PlatformSpawner).IfNotBound();
-            Container.BindInstance(GameInstaller).IfNotBound();
-            Container.BindInstance(Platform.PlatformMovement).IfNotBound();
+            get { return -ExtentHeight; }
+        }
+
+        public float Top
+        {
+            get { return ExtentHeight; }
+        }
+
+        public float Left
+        {
+            get { return -ExtentWidth; }
+        }
+
+        public float Right
+        {
+            get { return ExtentWidth; }
+        }
+
+        public float ExtentHeight
+        {
+            get { return camera.orthographicSize; }
+        }
+
+        public float Height
+        {
+            get { return ExtentHeight * 2.0f; }
+        }
+
+        public float ExtentWidth
+        {
+            get { return camera.aspect * camera.orthographicSize; }
+        }
+
+        public float Width
+        {
+            get { return ExtentWidth * 2.0f; }
         }
     }
 }

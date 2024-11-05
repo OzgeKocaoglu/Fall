@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------------
-    Title       :  LoginInstaller
-    Date        :  2 Kasım 2024
+    Title       :  GameSignals
+    Date        :  23:05:24
     Programmer  :  Ozge Kocaoglu
     Package     :  Version 1.0
     Copyright   :  MIT License
@@ -22,21 +22,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Zenject;
-
-namespace Persephone.Installers
+namespace Persephone.Signals
 {
-    public class LoginInstaller : MonoInstaller
-    {
-        public override void InstallBindings()
-        {
-            InstallLogin();
-        }
-
-        void InstallLogin()
-        {
-            
-        }
-    }
-
+    public struct PlayerDiedSignal {}
+    public struct PlatformWentOutsideSignal{}
 }

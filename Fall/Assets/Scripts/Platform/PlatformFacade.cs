@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------------
-    Title       :  GameSettingsInstaller
-    Date        :  2 Kasım 2024
+    Title       :  PlatformFacade
+    Date        :  22:51:12
     Programmer  :  Ozge Kocaoglu
     Package     :  Version 1.0
     Copyright   :  MIT License
@@ -21,30 +21,48 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using Zenject;
-using Zenject.SpaceFighter;
 
-namespace Persephone.Installers
+namespace Persephone
 {
-    [CreateAssetMenu(fileName = "Fall", menuName = "Fall/GameInstaller")]
-    public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInstaller>
+    public class PlatformFacade : MonoBehaviour, IPoolable<float, IMemoryPool>, IDisposable
     {
-        public GameInstaller.Settings GameInstaller;
-        public PlatformSpawner.Settings PlatformSpawner;
-        public PlatformSettings Platform;
-
-        [Serializable]
-        public class PlatformSettings
+        private PlatformView view;
+        private PlatformRegistry registry;
+        private IMemoryPool pool;
+        
+        [Inject]
+        public void Construct(PlatformView view, PlatformRegistry registry)
         {
-            public PlatformMovementHandler.Settings PlatformMovement;
+            this.view = view;
+            this.registry = registry;
         }
         
-        public override void InstallBindings()
+        public void Dispose()
         {
-            Container.BindInstance(PlatformSpawner).IfNotBound();
-            Container.BindInstance(GameInstaller).IfNotBound();
-            Container.BindInstance(Platform.PlatformMovement).IfNotBound();
+            pool.Despawn(this);
+        }
+        
+        public Vector3 Position
+        {
+            get { return view.Position; }
+            set { view.Position = value; }
+        }
+        
+        public void OnDespawned()
+        {
+            registry.RemoveEnemy(this);
+            pool = null;
+        }
+
+        public void OnSpawned(float t, IMemoryPool pool)
+        {
+            this.pool = pool;
+            registry.AddEnemy(this);
+        }
+        
+        public class Factory : PlaceholderFactory<float, PlatformFacade>
+        {
         }
     }
 }

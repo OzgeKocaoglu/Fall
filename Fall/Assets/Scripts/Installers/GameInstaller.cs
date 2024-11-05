@@ -28,13 +28,37 @@ namespace Persephone.Installers
 {
     public class GameInstaller : MonoInstaller
     {
-        [InjectOptional]
-        public string SceneName = "Splash";
+        [Inject]
+        Settings settings = null;
         
         public override void InstallBindings() 
         {
-            Container.Bind(typeof(Splash)).AsSingle();
-            Container.BindInstance(SceneName).WhenInjectedInto<SceneHandler>();
+            Container.BindInterfacesAndSelfTo<PlatformSpawner>().AsSingle();
+            
+            Container.BindFactory<float, PlatformFacade, PlatformFacade.Factory>()
+                .FromPoolableMemoryPool<float, PlatformFacade, PlatformFacadePool>(poolBinder => poolBinder
+                    .WithInitialSize(5)
+                    .FromSubContainerResolve()
+                    .ByNewPrefabInstaller<PlatformInstaller>(settings.PlatformPrefab)
+                    .UnderTransformGroup("Platforms"));
+            
+            Container.Bind<LevelBoundary>().AsSingle();
+            
+            Container.Bind<PlatformRegistry>().AsSingle();
+
+            GameSignalsInstaller.Install(Container);
+
+        }
+        
+        [Serializable]
+        public class Settings
+        {
+            public GameObject PlatformPrefab;
+            public GameObject SpikePlatformPrefab;
+        }
+        
+        class PlatformFacadePool : MonoPoolableMemoryPool<float, IMemoryPool, PlatformFacade>
+        {
         }
     }
 }

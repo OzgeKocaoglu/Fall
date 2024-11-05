@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------------
-    Title       :  GameSettingsInstaller
-    Date        :  2 Kasım 2024
+    Title       :  PlatformRegistry
+    Date        :  22:57:35
     Programmer  :  Ozge Kocaoglu
     Package     :  Version 1.0
     Copyright   :  MIT License
@@ -22,29 +22,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Zenject;
-using Zenject.SpaceFighter;
-
-namespace Persephone.Installers
+namespace Persephone
 {
-    [CreateAssetMenu(fileName = "Fall", menuName = "Fall/GameInstaller")]
-    public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInstaller>
+    public class PlatformRegistry
     {
-        public GameInstaller.Settings GameInstaller;
-        public PlatformSpawner.Settings PlatformSpawner;
-        public PlatformSettings Platform;
-
-        [Serializable]
-        public class PlatformSettings
-        {
-            public PlatformMovementHandler.Settings PlatformMovement;
-        }
+        private readonly List<PlatformFacade> platforms = new List<PlatformFacade>();
         
-        public override void InstallBindings()
+        public IEnumerable<PlatformFacade> Enemies
         {
-            Container.BindInstance(PlatformSpawner).IfNotBound();
-            Container.BindInstance(GameInstaller).IfNotBound();
-            Container.BindInstance(Platform.PlatformMovement).IfNotBound();
+            get { return platforms; }
+        }
+
+        public void AddEnemy(PlatformFacade enemy)
+        {
+            platforms.Add(enemy);
+        }
+
+        public void RemoveEnemy(PlatformFacade enemy)
+        {
+            platforms.Remove(enemy);
         }
     }
 }

@@ -1,6 +1,6 @@
 /* --------------------------------------------------------------------------
-    Title       :  GameSettingsInstaller
-    Date        :  2 Kasım 2024
+    Title       :  GameSignalsInstaller
+    Date        :  4 Kasım 2024 Pazartesi
     Programmer  :  Ozge Kocaoglu
     Package     :  Version 1.0
     Copyright   :  MIT License
@@ -23,28 +23,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Zenject;
-using Zenject.SpaceFighter;
+using Persephone.Signals;
 
 namespace Persephone.Installers
 {
-    [CreateAssetMenu(fileName = "Fall", menuName = "Fall/GameInstaller")]
-    public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInstaller>
+    public class GameSignalsInstaller : Installer<GameSignalsInstaller>
     {
-        public GameInstaller.Settings GameInstaller;
-        public PlatformSpawner.Settings PlatformSpawner;
-        public PlatformSettings Platform;
-
-        [Serializable]
-        public class PlatformSettings
-        {
-            public PlatformMovementHandler.Settings PlatformMovement;
-        }
-        
         public override void InstallBindings()
         {
-            Container.BindInstance(PlatformSpawner).IfNotBound();
-            Container.BindInstance(GameInstaller).IfNotBound();
-            Container.BindInstance(Platform.PlatformMovement).IfNotBound();
+            SignalBusInstaller.Install(Container);
+
+            Container.DeclareSignal<PlatformWentOutsideSignal>();
+            Container.DeclareSignal<PlayerDiedSignal>();
+
+            // Include these just to ensure BindSignal works
+            Container.BindSignal<PlayerDiedSignal>().ToMethod<PlatformWentOutsideSignalObserver>(x => x.OnPlatformWentOut).FromNew();
+            Container.BindSignal<PlatformWentOutsideSignal>().ToMethod(() => Debug.Log("Fired EnemyKilledSignal"));
         }
+        
+        public class PlatformWentOutsideSignalObserver
+        {
+            public void OnPlatformWentOut()
+            {
+                Debug.Log("platform Went out");
+            }
+        }
+
     }
 }
